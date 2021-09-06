@@ -1,4 +1,4 @@
-package com.rubikkube.composemovie
+package com.rubikkube.composemovie.screens.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
