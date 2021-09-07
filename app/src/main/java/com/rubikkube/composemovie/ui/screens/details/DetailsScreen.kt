@@ -1,12 +1,13 @@
-package com.rubikkube.composemovie.screens.home
+package com.rubikkube.composemovie.ui.screens.details
 
 import androidx.compose.runtime.Composable
 import com.rubikkube.composemovie.viewmodel.AppViewModel
 
 @Composable
-fun HomeScreen(
+fun DetailsScreen(
     viewModel: AppViewModel,
-    detailsAction: (String) -> Unit
+    back: () -> Unit,
+    movieId: String
 ) {
 
 }

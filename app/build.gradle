@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id "kotlin-kapt"
-    id "dagger.hilt.android.plugin"
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -73,11 +74,11 @@ dependencies {
 
     //Hilt Compose
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android-compiler:2.35.1"
+    kapt "com.google.dagger:hilt-compiler:2.38.1"
 
     // Coroutines
-    // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
 
@@ -89,5 +90,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
     implementation 'com.squareup.okhttp3:okhttp:4.9.1'
 
+    //Coil
+    implementation("io.coil-kt:coil-compose:1.3.2")
+}
 
+kapt {
+    correctErrorTypes true
 }

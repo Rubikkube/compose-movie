@@ -8,12 +8,14 @@ import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
     primary = blue,
+    onPrimary = white,
     background = black,
     surface = paleBlack
 )
 
 private val LightColorPalette = lightColors(
     primary = blue,
+    onPrimary = black,
     background = white,
     surface = paleWhite
 
@@ -29,7 +31,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun ComposeMovieTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     content: @Composable() () -> Unit
 ) {
     val colors = if (darkTheme) {

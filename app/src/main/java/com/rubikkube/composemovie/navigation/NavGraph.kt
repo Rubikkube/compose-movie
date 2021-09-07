@@ -13,8 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.rubikkube.composemovie.screens.details.DetailsScreen
-import com.rubikkube.composemovie.screens.home.HomeScreen
+import com.rubikkube.composemovie.ui.screens.details.DetailsScreen
+import com.rubikkube.composemovie.ui.screens.home.HomeScreen
 import com.rubikkube.composemovie.viewmodel.AppViewModel
 
 @Preview(showBackground = true)
@@ -33,7 +33,8 @@ fun NavGraph() {
             val viewModel: AppViewModel = viewModel(
                 factory = HiltViewModelFactory(LocalContext.current, it),
             )
-            HomeScreen(viewModel, actions.actionDetails)
+
+            HomeScreen(viewModel, actions)
         }
         composable(
             "${Routes.Details.route}/{movieId}",
