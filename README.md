@@ -19,7 +19,7 @@ A Simple and Minimal Movies Android Application to demonstrate the <b>Modern And
 </div>
 
 # Download Application 👇  
-  Download Latest APK file From [Here](https://github.com/AminullahTajMuhammad/Quotee/blob/master/apk/Quotee.apk)
+  Download Latest APK file From [Here](https://github.com/Rubikkube/compose-movie/blob/main/apk/compose-movie.apk)
 
 ## Built With 🛠
 
