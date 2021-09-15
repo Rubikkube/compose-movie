@@ -31,7 +31,7 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun ComposeMovieTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     content: @Composable() () -> Unit
 ) {
     val colors = if (darkTheme) {

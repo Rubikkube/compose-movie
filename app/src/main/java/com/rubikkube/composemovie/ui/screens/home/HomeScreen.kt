@@ -150,9 +150,9 @@ fun GreetingSection(title: String) {
             painter = painterResource(id = R.drawable.ic_dark),
             contentDescription = null,
             tint = if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-                black
-            } else {
                 white
+            } else {
+                black
             },
         )
     }
