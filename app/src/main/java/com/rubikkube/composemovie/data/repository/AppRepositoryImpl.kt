@@ -3,6 +3,7 @@ package com.rubikkube.composemovie.data.repository
 import android.util.Log
 import com.rubikkube.composemovie.data.remote.ApiService
 import com.rubikkube.composemovie.data.remote.DataSource
+import com.rubikkube.composemovie.data.remote.responses.CastResponse
 import com.rubikkube.composemovie.data.remote.responses.MovieDetailsResponse
 import com.rubikkube.composemovie.data.remote.responses.MoviesResponse
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -57,12 +58,32 @@ class AppRepositoryImpl @Inject constructor(
     override suspend fun getMoviesDetails(apiKey: String, movieId: String): Flow<DataSource<MovieDetailsResponse>> {
         return flow {
             try {
-                val result = apiService.getMovieDetails(apiKey = apiKey, movieId)
+                val result = apiService.getMovieDetails(movie_id = movieId, apiKey = apiKey)
                 emit(DataSource.success(result))
             } catch (e: Exception) {
                 if(e is IOException) {
                     emit(DataSource.error("No Internet Connection", null))
                 } else {
+                    Log.d("Movies-Details-Error", e.localizedMessage.toString())
+                    emit(DataSource.error("Something went wrong...", null))
+                }
+            }
+        }
+    }
+
+    override suspend fun getMoviesCast(
+        apiKey: String,
+        movieId: String
+    ): Flow<DataSource<CastResponse>> {
+        return flow {
+            try {
+                val result = apiService.getMovieCast(movie_id = movieId, apiKey = apiKey)
+                emit(DataSource.success(result))
+            } catch (e: Exception) {
+                if(e is IOException) {
+                    emit(DataSource.error("No Internet Connection", null))
+                } else {
+                    Log.d("Movies-Cast-Error", e.localizedMessage.toString())
                     emit(DataSource.error("Something went wrong...", null))
                 }
             }

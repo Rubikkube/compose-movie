@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rubikkube.composemovie.data.remote.DataSource
 import com.rubikkube.composemovie.data.remote.Status
+import com.rubikkube.composemovie.data.remote.responses.CastResponse
 import com.rubikkube.composemovie.data.remote.responses.MovieDetailsResponse
 import com.rubikkube.composemovie.data.remote.responses.MoviesResponse
 import com.rubikkube.composemovie.data.repository.AppRepository
@@ -68,4 +69,21 @@ class AppViewModel @Inject constructor(
         }
     }
 
+
+    private val _movieCast = MutableStateFlow<DataSource<CastResponse>>(DataSource.loading(null))
+    val movieCast get() = _movieCast
+    fun getMoviesCast(apiKey: String, movieId: String) {
+        viewModelScope.launch {
+            appRepository.getMoviesCast(apiKey, movieId).collect {
+                when(it.status) {
+                    Status.SUCCESS -> {
+                        _movieCast.emit(DataSource.success(it.data))
+                    }
+                    else -> {
+                        _movieCast.emit(DataSource.error(it.message.toString(), null))
+                    }
+                }
+            }
+        }
+    }
 }
