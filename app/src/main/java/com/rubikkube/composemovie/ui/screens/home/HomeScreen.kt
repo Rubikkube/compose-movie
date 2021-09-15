@@ -1,6 +1,8 @@
 @file:Suppress("PreviewAnnotationInFunctionWithParameters")
 package com.rubikkube.composemovie.ui.screens.home
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -22,8 +24,7 @@ import com.rubikkube.composemovie.components.UpComingMoviesListItem
 import com.rubikkube.composemovie.data.remote.Status
 import com.rubikkube.composemovie.data.remote.responses.MovieModel
 import com.rubikkube.composemovie.navigation.Actions
-import com.rubikkube.composemovie.ui.theme.dark_gray
-import com.rubikkube.composemovie.ui.theme.white
+import com.rubikkube.composemovie.ui.theme.*
 import com.rubikkube.composemovie.viewmodel.AppViewModel
 
 
@@ -124,15 +125,38 @@ fun HomeScreen(
 
 @Composable
 fun GreetingSection(title: String) {
-    Text(
-        text = title,
-        color = MaterialTheme.colors.onBackground,
-        style = TextStyle(
+    Row(
+        Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = title,
             color = MaterialTheme.colors.onBackground,
-            fontFamily = FontFamily(Font(R.font.pt_sans_bold))
-        ),
-        fontSize = 22.sp,
-    )
+            style = TextStyle(
+                color = MaterialTheme.colors.onBackground,
+                fontFamily = FontFamily(Font(R.font.pt_sans_bold))
+            ),
+            fontSize = 22.sp,
+            modifier = Modifier.weight(1f)
+        )
+        Icon(
+            modifier = Modifier.clickable {
+                val mode = AppCompatDelegate.getDefaultNightMode()
+                if(mode == AppCompatDelegate.MODE_NIGHT_YES) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+            },
+            painter = painterResource(id = R.drawable.ic_dark),
+            contentDescription = null,
+            tint = if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                black
+            } else {
+                white
+            },
+        )
+    }
+
 }
 
 @Composable

@@ -81,7 +81,7 @@ class AppRepositoryImpl @Inject constructor(
                 emit(DataSource.success(result))
             } catch (e: Exception) {
                 if(e is IOException) {
-                    emit(DataSource.error("No Internet Connection", null))
+                        emit(DataSource.error("No Internet Connection", null))
                 } else {
                     Log.d("Movies-Cast-Error", e.localizedMessage.toString())
                     emit(DataSource.error("Something went wrong...", null))
