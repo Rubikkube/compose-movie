@@ -25,6 +25,9 @@ A Simple and Minimal Movies Android Application to demonstrate the <b>Modern And
 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android
   development.
+- [Compose Constraint Layout](https://developer.android.com/jetpack/compose/layouts/constraintlayout) - ConstraintLayout can help place 
+  composables relative to others on the screen, and is an alternative to using multiple nested Row, Column, Box and custom layout elements. 
+  ConstraintLayout is useful when implementing larger layouts with more complicated alignment requirements.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - A coroutine is a
   concurrency design pattern that you can use on Android to simplify code that executes
   asynchronously.
